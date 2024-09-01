@@ -1,0 +1,19 @@
+{% extends "_base.html" %}
+{% block content %}
+
+<P>
+  <em>Recommendation</em>: Read the
+  <a href="{{ url_for('user_documentation') }}?referrer=design_documentation">user documentation</a>
+  and <a href="{{ url_for('faq') }}?referrer=design_documentation">FAQ</a> first.
+  This page assumes familiarity with the jargon used in the Physics Derivation Graph.
+</P>
+
+<P>
+  This page provides background context for design decisions and implementation choices associated with the Physics Derivation Graph (PDG).
+
+
+<P>Rendered HTML pages should have a single scope. (As opposed to a single-page website.)
+
+<P>
+
+{% endblock %}
