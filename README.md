@@ -1,3 +1,8 @@
+
+This repo is the source code for the website <https://derivationmap.net/>, aka <https://allofphysics.com>.
+
+
+
 # Files not in this repo
  * `certs/dhparam.pem`
  * `certs/fullchain.pem`
@@ -13,8 +18,19 @@ GOOGLE_CLIENT_SECRET=
 SECRET_KEY=
 ```
 
+# How to use (for the impatient)
 
-# quickstart
+    git clone https://github.com/allofphysicsgraph/ui_v7_website_flask_json.git
+    cd ui_v7_website_flask_json/flask/
+    docker build -t flask_ub .
+    docker run -it --rm -v`pwd`/data.json:/home/appuser/app/data.json \
+               -v`pwd`/logs/:/home/appuser/app/logs/ \
+               --publish 5000:5000 flask_ub
+
+See [developer documentation](https://derivationmap.net/developer_documentation?referrer=github_README) after reading the [user documentation](https://derivationmap.net/user_documentation)
+
+
+## quickstart
 
 ```bash
 docker-compose up --build --remove-orphans
@@ -53,3 +69,20 @@ combining flask, gunicorn, nginx is from
 
 nginx timeout
 <https://wiki.ssdt-ohio.org/display/rtd/Adjusting+nginx-proxy+Timeout+Configuration>
+
+# Licensing
+
+
+[Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/)
+
+
+# Software Requirements
+
+* Docker
+* a web browser
+
+# Contributing
+
+Before submitting code via a pull request, please open an issue (feature or bug) and describe your question or intent.
+
+Python code is formatted using Black.
