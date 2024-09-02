@@ -1479,6 +1479,17 @@ def design_documentation():
         "design_documentation.html", title="Design Decisions Documentation"
     )
 
+
+@app.route("/historical_precedents", methods=["GET", "POST"])
+def historical_precedents():
+    """
+    a static page
+    """
+    logger.info("[trace]")
+    return render_template(
+        "historical_precedents.html", title="historical precedents"
+    )
+
 @app.route("/comparison_of_design_options_cas", methods=["GET", "POST"])
 def comparison_of_design_options_cas():
     """
