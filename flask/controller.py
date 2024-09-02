@@ -1479,6 +1479,57 @@ def design_documentation():
         "design_documentation.html", title="Design Decisions Documentation"
     )
 
+@app.route("/comparison_of_design_options_cas", methods=["GET", "POST"])
+def comparison_of_design_options_cas():
+    """
+    a static page
+    """
+    logger.info("[trace]")
+    return render_template(
+        "comparison_of_design_options_cas.html", title="Comparison of Design Options Documentation"
+    )
+
+@app.route("/comparison_of_design_options_proofs", methods=["GET", "POST"])
+def comparison_of_design_options_proofs():
+    """
+    a static page
+    """
+    logger.info("[trace]")
+    return render_template(
+        "comparison_of_design_options_proofs.html", title="Comparison of Design Options Documentation"
+    )
+
+@app.route("/comparison_of_design_options_syntax", methods=["GET", "POST"])
+def comparison_of_design_options_syntax():
+    """
+    a static page
+    """
+    logger.info("[trace]")
+    return render_template(
+        "comparison_of_design_options_syntax.html", title="Comparison of Design Options Documentation"
+    )
+
+@app.route("/comparison_of_design_options_database", methods=["GET", "POST"])
+def comparison_of_design_options_database():
+    """
+    a static page
+    """
+    logger.info("[trace]")
+    return render_template(
+        "comparison_of_design_options_database.html", title="Comparison of Design Options Documentation"
+    )
+
+@app.route("/design_principles_and_goals", methods=["GET", "POST"])
+def design_principles_and_goals():
+    """
+    a static page
+    """
+    logger.info("[trace]")
+    return render_template(
+        "design_principles_and_goals.html", title="Design Principles and Goals"
+    )
+
+
 
 # @app.route("/example_T_f_d3js", methods=["GET", "POST"])
 # def example_T_f_d3js():
