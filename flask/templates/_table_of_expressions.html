@@ -6,6 +6,7 @@
     <th>list of symbols</th>
 <!--    <th>Abstract Syntax Tree</th> -->
     <th>name</th>
+    <th>dimension check</th>
     <th>notes</th>
     <th>used in derivation</th>
   </tr>
@@ -36,6 +37,7 @@
       {% endif %}
     </td>
     <td>{{ dat["expressions"][expr_id]['name'] }}</td>
+    <td>TODO</td> <!-- dimension check -->
     <td>
       <!-- https://stackoverflow.com/a/43058043/1164295 -->
       {% if dat["expressions"][expr_id]['notes'].startswith('http') %}
