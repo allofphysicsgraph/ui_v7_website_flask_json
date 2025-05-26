@@ -2,7 +2,6 @@
 This repo is the source code for the website <https://derivationmap.net/>, aka <https://allofphysics.com>.
 
 
-
 # Files not in this repo
  * `certs/dhparam.pem`
  * `certs/fullchain.pem`
