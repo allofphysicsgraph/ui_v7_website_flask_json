@@ -6,7 +6,9 @@
 
 # https://docs.docker.com/engine/reference/builder/#from
 # https://github.com/phusion/baseimage-docker
-FROM phusion/baseimage:0.11
+# https://hub.docker.com/r/phusion/baseimage/tags
+#FROM phusion/baseimage:0.11
+FROM phusion/baseimage:jammy-1.0.4
 # Ubuntu is too big
 #FROM ubuntu:latest
 

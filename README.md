@@ -19,6 +19,8 @@ SECRET_KEY=
 
 # How to use (for the impatient)
 
+Assuming you already have `git` and `docker` available, 
+
     git clone https://github.com/allofphysicsgraph/ui_v7_website_flask_json.git
     cd ui_v7_website_flask_json/flask/
     docker build -t flask_ub .
@@ -26,13 +28,15 @@ SECRET_KEY=
                -v`pwd`/logs/:/home/appuser/app/logs/ \
                --publish 5000:5000 flask_ub
 
+For Docker installation see <https://docs.docker.com/desktop/install>
+
 See [developer documentation](https://derivationmap.net/developer_documentation?referrer=github_README) after reading the [user documentation](https://derivationmap.net/user_documentation)
 
 
 ## quickstart
 
 ```bash
-docker-compose up --build --remove-orphans
+docker compose up --build --remove-orphans
 ```
 As a two step process:
 
