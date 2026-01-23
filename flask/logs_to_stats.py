@@ -24,7 +24,7 @@ import re # https://docs.python.org/3/library/re.html
 import time
 import matplotlib.pyplot as plt # type: ignore
 # https://pythonhosted.org/python-geoip/
-from geoip import geolite2 # type: ignore
+#from geoip import geolite2 # type: ignore
 import os
 import logging
 
@@ -102,7 +102,8 @@ def auth_log_to_df(path_to_auth_log, path_to_country_code_table):
 #        logger.info('[trace]')
         # ## IP to country code using library, then country code to name using lookup table
         if ip:
-            match = geolite2.lookup(ip)
+            #match = geolite2.lookup(ip)
+            match = False # 2026-01-23 BHP removed geo-ip database dependencies while troubleshooting
             if match:
                 return country_code_df[country_code_df['country code']==match.country]['name'].values[0]
             else:
