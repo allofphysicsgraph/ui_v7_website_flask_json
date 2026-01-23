@@ -3,7 +3,21 @@
 
 # this Makefile contains targets for use inside the Docker container and on the baremetal host
 
-# 
+
+# Get the machine architecture.
+# On arm64 (Apple Silicon M1/M2/etc.), `uname -m` outputs "arm64".
+# On amd64 (Intel), `uname -m` outputs "x86_64".
+ARCH := $(shell uname -m)
+
+ifeq ($(ARCH), arm64)
+        this_arch=arm64
+else ifeq ($(ARCH), x86_64)
+        this_arch=amd64
+else
+        @echo "Unknown architecture: $(ARCH). Cannot determine if Mac is new (arm64) or old (amd64)."
+endif
+
+# .PHONY is special target used to declare that a target name does not correspond to an actual file to be built.
 .PHONY: help clean webserver typehints flake8 pylint doctest mccabe
 
 help:
