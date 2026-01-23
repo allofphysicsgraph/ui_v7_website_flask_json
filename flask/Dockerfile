@@ -13,7 +13,7 @@ FROM phusion/baseimage:jammy-1.0.4
 #FROM ubuntu:latest
 
 # PYTHONDONTWRITEBYTECODE: Prevents Python from writing pyc files to disk (equivalent to python -B option)
-ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONDONTWRITEBYTECODE=1
 
 # https://docs.docker.com/engine/reference/builder/#run
 RUN apt-get update && \
@@ -45,6 +45,8 @@ RUN apt-get update && \
 # https://docs.docker.com/engine/reference/builder/#copy
 # requirements.txt contains a list of the Python packages needed for the PDG
 COPY requirements.txt /tmp
+
+WORKDIR /tmp
 
 # https://www.npmjs.com/package/mathjax
 RUN npm install mathjax@3
@@ -87,8 +89,6 @@ COPY common_lib.py \
      user.py \
      validate_dimensions_sympy.py \
      validate_steps_sympy.py \
-     cert.pem \
-     key.pem \
      /home/appuser/app/
 
 USER root
