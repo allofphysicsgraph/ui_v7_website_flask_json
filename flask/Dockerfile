@@ -65,7 +65,7 @@ RUN npm install mathjax@3
 # https://stackoverflow.com/a/63457606/1164295
 RUN pip3 install --upgrade pip
 
-RUN pip3 install -r /tmp/requirements.txt --no-cache-dir -vvv
+RUN pip3 install -r /tmp/requirements.txt --no-cache-dir -vvv --ignore-installed blinker
 
 RUN useradd --create-home appuser
 WORKDIR       /home/appuser/app
@@ -92,7 +92,7 @@ COPY common_lib.py \
      /home/appuser/app/
 
 USER root
-RUN mv /node_modules/mathjax/es5 /home/appuser/app/static/mathjax
+RUN mv /tmp/node_modules/mathjax/es5 /home/appuser/app/static/mathjax
 RUN chown -R appuser /home/appuser/app && chgrp -R appuser /home/appuser/app
 
 # TODO - https://github.com/allofphysicsgraph/proofofconcept/issues/82
