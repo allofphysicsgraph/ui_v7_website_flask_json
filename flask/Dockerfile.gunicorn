@@ -3,14 +3,16 @@
 # https://creativecommons.org/licenses/by/4.0/
 # Attribution 4.0 International (CC BY 4.0)
 
+
 # https://docs.docker.com/engine/reference/builder/#from
 # https://github.com/phusion/baseimage-docker
-FROM phusion/baseimage:0.11
-# Ubuntu is too big 
+# https://hub.docker.com/r/phusion/baseimage/tags
+FROM phusion/baseimage:jammy-1.0.4
+# Ubuntu is too big
 #FROM ubuntu:latest
 
 # PYTHONDONTWRITEBYTECODE: Prevents Python from writing pyc files to disk (equivalent to python -B option)
-ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONDONTWRITEBYTECODE=1
 
 # https://docs.docker.com/engine/reference/builder/#run
 RUN apt-get update && \
@@ -20,8 +22,6 @@ RUN apt-get update && \
                python3 \
                python3-pip \
                python3-dev \
-#               python2.7 \
-#               python-pip \
 # documentation generation
                python3-sphinx \
                build-essential  \
@@ -32,7 +32,6 @@ RUN apt-get update && \
 #               git-core \
 # npm for mathjax
                npm \
-#               2to3 \
 #               automake \
 #               autoreconf \
 # compile .tex to .dvi
@@ -42,6 +41,8 @@ RUN apt-get update && \
 # https://docs.docker.com/engine/reference/builder/#copy
 # requirements.txt contains a list of the Python packages needed for the PDG
 COPY requirements.txt /tmp
+
+WORKDIR /tmp
 
 # https://www.npmjs.com/package/mathjax
 RUN npm install mathjax@3
@@ -57,20 +58,33 @@ RUN npm install mathjax@3
 #RUN git clone https://github.com/fontforge/libspiro.git
 #RUN git clone https://github.com/fontforge/libuninameslist.git
 
+# TODO - https://github.com/allofphysicsgraph/proofofconcept/issues/82
+#RUN tlmgr init-usertree
+#RUN apt-get install -y texlive-base
+#RUN apt-get install -y wget xzdec
+#RUN /usr/bin/tlmgr install braket
+
 # https://stackoverflow.com/a/63457606/1164295
 RUN pip3 install --upgrade pip
 
-RUN pip3 install -r /tmp/requirements.txt
+RUN pip3 install -r /tmp/requirements.txt --no-cache-dir -vvv --ignore-installed blinker
 
 RUN useradd --create-home appuser
 WORKDIR       /home/appuser/app
+
 RUN mkdir -p  /home/appuser/app/uploads
 RUN mkdir -p  /home/appuser/app/tmp
+
+COPY --chown=appuser:appuser templates     /home/appuser/app/templates
+COPY --chown=appuser:appuser static        /home/appuser/app/static
+RUN mv /tmp/node_modules/mathjax/es5 /home/appuser/app/static/mathjax
+
+RUN chown -R appuser /home/appuser/app && chgrp -R appuser /home/appuser/app
+
 USER appuser
 
-COPY templates     /home/appuser/app/templates
-COPY static        /home/appuser/app/static
-COPY common_lib.py \
+COPY --chown=appuser:appuser \
+     common_lib.py \
      compute.py \
      config.py \
      controller.py \
@@ -87,16 +101,6 @@ COPY common_lib.py \
      wsgi.py \
      /home/appuser/app/
 
-USER root
-RUN mv /node_modules/mathjax/es5 /home/appuser/app/static/mathjax
-RUN chown -R appuser /home/appuser/app && chgrp -R appuser /home/appuser/app
-
-# TODO - https://github.com/allofphysicsgraph/proofofconcept/issues/82
-#RUN tlmgr init-usertree
-#RUN apt-get install -y texlive-base
-#RUN apt-get install -y wget xzdec
-#RUN /usr/bin/tlmgr install braket
-USER appuser
 RUN echo "alias python=python3" > /home/appuser/.bashrc
 RUN bash -l /home/appuser/.bashrc
 
