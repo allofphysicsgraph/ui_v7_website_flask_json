@@ -30,10 +30,10 @@ Assuming you already have `git` and `docker` available,
 ```bash
     git clone https://github.com/allofphysicsgraph/ui_v7_website_flask_json.git
     cd ui_v7_website_flask_json/flask/
-    docker build -t flask_ub .
+    docker build -t ui_v7_flask:latest .
     docker run -it --rm -v`pwd`/data.json:/home/appuser/app/data.json \
                -v`pwd`/logs/:/home/appuser/app/logs/ \
-               --publish 5000:5000 flask_ub
+               --publish 5000:5000 ui_v7_flask:latest
 ```
 
 For Docker installation see <https://docs.docker.com/desktop/install>
