@@ -1,5 +1,5 @@
 # Physics Derivation Graph
-# Ben Payne, 2021
+# Ben Payne, 2026
 # https://creativecommons.org/licenses/by/4.0/
 # Attribution 4.0 International (CC BY 4.0)
 
@@ -7,7 +7,6 @@
 # https://docs.docker.com/engine/reference/builder/#from
 # https://github.com/phusion/baseimage-docker
 # https://hub.docker.com/r/phusion/baseimage/tags
-#FROM phusion/baseimage:0.11
 FROM phusion/baseimage:jammy-1.0.4
 # Ubuntu is too big
 #FROM ubuntu:latest
@@ -110,3 +109,4 @@ ENTRYPOINT ["python3"]
 # There can only be one CMD instruction in a Dockerfile
 # The CMD instruction should be used to run the software contained by your image, along with any arguments.
 CMD ["/home/appuser/app/controller.py"]
+
