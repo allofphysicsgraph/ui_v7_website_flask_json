@@ -23,8 +23,6 @@ RUN apt-get update && \
                python3 \
                python3-pip \
                python3-dev \
-#               python2.7 \
-#               python-pip \
 # documentation generation
                python3-sphinx \
                build-essential  \
@@ -35,7 +33,6 @@ RUN apt-get update && \
 #               git-core \
 # npm for mathjax
                npm \
-#               2to3 \
 #               automake \
 #               autoreconf \
 # compile .tex to .dvi
@@ -62,6 +59,12 @@ RUN npm install mathjax@3
 #RUN git clone https://github.com/fontforge/libspiro.git
 #RUN git clone https://github.com/fontforge/libuninameslist.git
 
+# TODO - https://github.com/allofphysicsgraph/proofofconcept/issues/82
+#RUN tlmgr init-usertree
+#RUN apt-get install -y texlive-base
+#RUN apt-get install -y wget xzdec
+#RUN /usr/bin/tlmgr install braket
+
 # https://stackoverflow.com/a/63457606/1164295
 RUN pip3 install --upgrade pip
 
@@ -69,13 +72,16 @@ RUN pip3 install -r /tmp/requirements.txt --no-cache-dir -vvv --ignore-installed
 
 RUN useradd --create-home appuser
 WORKDIR       /home/appuser/app
+
 RUN mkdir -p  /home/appuser/app/uploads
 RUN mkdir -p  /home/appuser/app/tmp
+
 USER appuser
 
-COPY templates     /home/appuser/app/templates
-COPY static        /home/appuser/app/static
-COPY common_lib.py \
+COPY --chown=appuser:appuser templates     /home/appuser/app/templates
+COPY --chown=appuser:appuser static        /home/appuser/app/static
+COPY --chown=appuser:appuser \
+     common_lib.py \
      compute.py \
      config.py \
      controller.py \
@@ -95,11 +101,6 @@ USER root
 RUN mv /tmp/node_modules/mathjax/es5 /home/appuser/app/static/mathjax
 RUN chown -R appuser /home/appuser/app && chgrp -R appuser /home/appuser/app
 
-# TODO - https://github.com/allofphysicsgraph/proofofconcept/issues/82
-#RUN tlmgr init-usertree
-#RUN apt-get install -y texlive-base
-#RUN apt-get install -y wget xzdec
-#RUN /usr/bin/tlmgr install braket
 USER appuser
 RUN echo "alias python=python3" > /home/appuser/.bashrc
 RUN bash -l /home/appuser/.bashrc
