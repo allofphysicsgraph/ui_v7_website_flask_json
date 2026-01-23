@@ -76,10 +76,14 @@ WORKDIR       /home/appuser/app
 RUN mkdir -p  /home/appuser/app/uploads
 RUN mkdir -p  /home/appuser/app/tmp
 
-USER appuser
-
 COPY --chown=appuser:appuser templates     /home/appuser/app/templates
 COPY --chown=appuser:appuser static        /home/appuser/app/static
+RUN mv /tmp/node_modules/mathjax/es5 /home/appuser/app/static/mathjax
+
+RUN chown -R appuser /home/appuser/app && chgrp -R appuser /home/appuser/app
+
+USER appuser
+
 COPY --chown=appuser:appuser \
      common_lib.py \
      compute.py \
@@ -97,11 +101,6 @@ COPY --chown=appuser:appuser \
      validate_steps_sympy.py \
      /home/appuser/app/
 
-USER root
-RUN mv /tmp/node_modules/mathjax/es5 /home/appuser/app/static/mathjax
-RUN chown -R appuser /home/appuser/app && chgrp -R appuser /home/appuser/app
-
-USER appuser
 RUN echo "alias python=python3" > /home/appuser/.bashrc
 RUN bash -l /home/appuser/.bashrc
 
