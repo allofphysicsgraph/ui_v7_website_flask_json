@@ -57,20 +57,20 @@ else
 endif
 
 docker:
-	docker build -t flask_ub .
+	docker build -t ui_v7_flask:latest-$(this_arch) .
 	docker run -it --rm -v`pwd`/data.json:/home/appuser/app/data.json \
            -v`pwd`/logs/:/home/appuser/app/logs/ \
            -v`pwd`/users_sqlite.db:/home/appuser/app/users_sqlite.db \
-           --env-file .env --publish 5000:5000 flask_ub
+           --env-file .env --publish 5000:5000 ui_v7_flask:latest-$(this_arch)
 
 dockerlive:
-	docker build -t flask_ub .
+	docker build -t ui_v7_flask:latest-$(this_arch) .
 	docker run -it --rm -v`pwd`:/scratch \
            -v`pwd`/data.json:/home/appuser/app/data.json \
            -v`pwd`/logs/:/home/appuser/app/logs/ \
            -v`pwd`/users_sqlite.db:/home/appuser/app/users_sqlite.db \
            --env-file .env --entrypoint='' \
-           --publish 5000:5000 flask_ub /bin/bash
+           --publish 5000:5000 ui_v7_flask:latest-$(this_arch) /bin/bash
 
 neo4j:
 	docker run --publish=7474:7474 --publish=7687:7687 --publish=7473:7473 \
@@ -79,6 +79,8 @@ neo4j:
            --volume=$$HOME/neo4j/conf:/conf \
            --volume=$$HOME/neo4j/tmp:/tmp \
            --env NEO4J_AUTH=none neo4j:4.0
+
+# the following are for use inside the container
 
 flask:
 	python3 controller.py
