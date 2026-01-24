@@ -1,4 +1,5 @@
 # Physics Derivation Graph
+# https://allofphysics.com
 # Ben Payne, 2026
 # Creative Commons Attribution 4.0 International License
 # https://creativecommons.org/licenses/by/4.0/
@@ -17,8 +18,6 @@ else
         @echo "Unknown architecture: $(ARCH). Cannot determine if Mac is new (arm64) or old (amd64)."
 endif
 
-
-
 # todo: docker kill $(docker ps -q); make up
 
 launch_webserver:
@@ -26,3 +25,5 @@ launch_webserver:
 
 launch_webserver_interactive:
 	docker compose up --build --force-recreate --remove-orphans
+
+# EOF
