@@ -61,8 +61,6 @@ services:
     volumes:
     - ${PWD}/flask/logs/:/logs/
     - ${PWD}/certs/:/certs/
-    depends_on:
-      - flask
 
 
 # EOF
