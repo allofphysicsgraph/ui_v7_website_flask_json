@@ -61,8 +61,7 @@ docker_build:
 
 # relies on `CMD` to launch Flask web server 
 docker: docker_build
-	docker run -it --rm 
-	   -v`pwd`/data.json:/home/appuser/app/data.json \
+	docker run -it --rm -v`pwd`/data.json:/home/appuser/app/data.json \
            -v`pwd`/logs/:/home/appuser/app/logs/ \
            -v`pwd`/users_sqlite.db:/home/appuser/app/users_sqlite.db \
            --env-file .env \
