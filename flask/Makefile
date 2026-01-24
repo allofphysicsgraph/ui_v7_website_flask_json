@@ -19,6 +19,13 @@ else
         @echo "Unknown architecture: $(ARCH). Cannot determine if Mac is new (arm64) or old (amd64)."
 endif
 
+WEBSERVER_IMAGE=ui_v7_flask_webserver
+
+CONTAINER_TAG=latest-$(this_arch)
+
+DOCKER_OR_PODMAN=docker
+#DOCKER_OR_PODMAN=podman
+
 # .PHONY is special target used to declare that a target name does not correspond to an actual file to be built.
 .PHONY: help clean webserver typehints flake8 pylint doctest mccabe
 
@@ -58,27 +65,27 @@ else
 	@echo 'FILE_NAME is undefined'
 endif
 
-docker_build:
-	docker build -t ui_v7_flask:latest-$(this_arch) .
+container_build:
+	$(DOCKER_OR_PODMAN) build -t $(WEBSERVER_IMAGE):$(CONTAINER_TAG) .
 
 # relies on `CMD` to launch Flask web server 
-docker: docker_build
-	docker run -it --rm -v`pwd`/data.json:/home/appuser/app/data.json \
+container: docker_build
+	$(DOCKER_OR_PODMAN) run -it --rm -v`pwd`/data.json:/home/appuser/app/data.json \
            -v`pwd`/logs/:/home/appuser/app/logs/ \
            -v`pwd`/users_sqlite.db:/home/appuser/app/users_sqlite.db \
            --env-file .env \
-  	   --publish 5000:5000 ui_v7_flask:latest-$(this_arch)
+  	   --publish 5000:5000 $(WEBSERVER_IMAGE):$(CONTAINER_TAG)
 
 # overrides the default startup command in the Docker container; Flask would need to be launched manually inside the container
-dockerlive: docker_build
-	docker run -it --rm \
+containerlive: docker_build
+	$(DOCKER_OR_PODMAN) run -it --rm \
 	   -v`pwd`:/scratch \
            -v`pwd`/data.json:/home/appuser/app/data.json \
            -v`pwd`/logs/:/home/appuser/app/logs/ \
            -v`pwd`/users_sqlite.db:/home/appuser/app/users_sqlite.db \
            --env-file .env \
  	   --entrypoint='' \
-           --publish 5000:5000 ui_v7_flask:latest-$(this_arch) /bin/bash
+           --publish 5000:5000 $(WEBSERVER_IMAGE):$(CONTAINER_TAG) /bin/bash
 
 
 # the following are for use inside the container
