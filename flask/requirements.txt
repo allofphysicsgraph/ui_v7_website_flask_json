@@ -22,7 +22,7 @@ wheel
 gunicorn
 
 # https://github.com/allofphysicsgraph/proofofconcept/issues/157
-secure==0.2.1 
+secure==0.3.0 
 #as of 2026-01-24
 # TODO: un-pin this
 
