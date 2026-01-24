@@ -49,6 +49,10 @@ services:
      - /var/log/auth.log:/home/appuser/app/logs/auth.log
   nginx:
     build: ./services/nginx
+    # https://docs.docker.com/reference/compose-file/services/#depends_on
+    depends_on: 
+      flask:
+        condition: service_started
     restart: on-failure
     ports:
      - "80:80"
