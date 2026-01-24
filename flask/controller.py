@@ -63,7 +63,7 @@ from flask import (
 # https://nickjanetakis.com/blog/fix-missing-csrf-token-issues-with-flask
 from flask_wtf import FlaskForm, CSRFProtect, Form  # type: ignore
 
-from secure import SecureHeaders  # type: ignore
+import secure  # type: ignore
 
 # https://flask-login.readthedocs.io/en/latest/_modules/flask_login/mixins.html
 # https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
@@ -132,7 +132,7 @@ login_manager = LoginManager()
 csrf = CSRFProtect()
 
 # https://secure.readthedocs.io/en/latest/frameworks.html#flask
-secure_headers = SecureHeaders()
+secure_headers = secure.Secure()
 
 
 app = Flask(__name__, static_folder="static")
