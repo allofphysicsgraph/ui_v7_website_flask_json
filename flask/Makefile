@@ -59,6 +59,7 @@ endif
 docker_build:
 	docker build -t ui_v7_flask:latest-$(this_arch) .
 
+# relies on `CMD` to launch Flask web server 
 docker: docker_build
 	docker run -it --rm 
 	   -v`pwd`/data.json:/home/appuser/app/data.json \
@@ -67,6 +68,7 @@ docker: docker_build
            --env-file .env \
   	   --publish 5000:5000 ui_v7_flask:latest-$(this_arch)
 
+# overrides the default startup command in the Docker container; Flask would need to be launched manually inside the container
 dockerlive: docker_build
 	docker run -it --rm \
 	   -v`pwd`:/scratch \
