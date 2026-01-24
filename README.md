@@ -79,57 +79,23 @@ docker-compose up --build --force-recreate --remove-orphans --detach
 # Software Requirements
 
 * Docker
+* `git`
+* `make`
 * a web browser
 
 ## Software Versions
 
 Because software is in Docker containers (for reproducibility), the versions of the Docker software you're using matter. The
 software in this repo has been tested with
-* docker-compose 1.29.2
-* Compose file format 3.6 -- <https://docs.docker.com/reference/compose-file/>
-* Docker Engine release 20.10.11
+* `docker compose version` yields "2.34.0-desktop.1" on a Mac Airbook arm64; "v2.2.1" on a Mac Airbook amd64
+* Compose file format 3.6; see <https://docs.docker.com/reference/compose-file/>
+* `docker --version` yields "Docker version 28.0.4, build b8034c0" on a Mac Airbook arm64; "Docker version 20.10.11" on a Mac Airbook amd64
 See <https://docs.docker.com/compose/compose-file/compose-versioning/> for compatibility of versions.
 
 
-which is gathered by running
-```bash
-$ docker compose version
-Docker Compose version v2.29.2
-```
+## Troubleshooting and development
 
-```bash
-$ docker version
-Client: Docker Engine - Community
- Version:           27.2.0
- API version:       1.47
- Go version:        go1.21.13
- Git commit:        3ab4256
- Built:             Tue Aug 27 14:15:15 2024
- OS/Arch:           linux/amd64
- Context:           default
-
-Server: Docker Engine - Community
- Engine:
-  Version:          27.2.0
-  API version:      1.47 (minimum version 1.24)
-  Go version:       go1.21.13
-  Git commit:       3ab5c7d
-  Built:            Tue Aug 27 14:15:15 2024
-  OS/Arch:          linux/amd64
-  Experimental:     false
- containerd:
-  Version:          1.7.21
-  GitCommit:        472731909fa34bd7bc9c087e4c27943f9835f111
- runc:
-  Version:          1.1.13
-  GitCommit:        v1.1.13-0-g58aa920
- docker-init:
-  Version:          0.19.0
-  GitCommit:        de40ad0
-```
-
-
-docker-compose instructions are from from
+`docker-compose` instructions are from from
 <https://github.com/ChloeCodesThings/chloe_flask_docker_demo>
 and
 <https://codefresh.io/docker-tutorial/hello-whale-getting-started-docker-flask/>
@@ -145,15 +111,8 @@ nginx timeout
 Unless otherwise noted, all source code is covered by the [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/)
 
 
-# Software Requirements
-
-* Docker
-* a web browser
-
 # Contributing
 
-Before submitting code via a pull request, please open an issue (feature or bug) and describe your question or intent.
+See CONTRIBUTING.md for guidance.
 
-Python code is formatted using Black.
-
-
+#EOF
