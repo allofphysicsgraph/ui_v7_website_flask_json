@@ -76,10 +76,17 @@ or
 docker-compose up --build --force-recreate --remove-orphans --detach
 ```
 
+# Software Requirements
+
+* Docker
+* a web browser
+
+## Software Versions
+
 Because software is in Docker containers (for reproducibility), the versions of the Docker software you're using matter. The
 software in this repo has been tested with
 * docker-compose 1.29.2
-* Compose file format 3.6
+* Compose file format 3.6 -- <https://docs.docker.com/reference/compose-file/>
 * Docker Engine release 20.10.11
 See <https://docs.docker.com/compose/compose-file/compose-versioning/> for compatibility of versions.
 
