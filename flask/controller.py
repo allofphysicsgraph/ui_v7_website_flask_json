@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 
 # Physics Derivation Graph
-# Ben Payne, 2021
+# Ben Payne, 2026
+# https://allofphysics.com
+# Creative Commons Attribution 4.0 International License
 # https://creativecommons.org/licenses/by/4.0/
-# Attribution 4.0 International (CC BY 4.0)
+
 
 """
 # convention: every function and class includes a [trace] print
@@ -670,7 +672,7 @@ def set_secure_headers(response):
     https://secure.readthedocs.io/en/latest/frameworks.html#flask
     """
     # logger.info("[trace]")
-    secure_headers.flask(response)
+    secure_headers.framework.flask(response)
     # logger.debug(str(response))
     return response
 
@@ -1374,6 +1376,13 @@ def faq():
     """
     logger.info("[trace]")
     return render_template("faq.html", title="Frequently Asked Questions")
+
+
+@app.route("/blog/", methods=["GET"])
+def blog_list():
+    """ """
+    logger.info("[trace]")
+    return render_template("blog/blog_list.html")
 
 
 @app.route("/blog/<YYYY>/<MM>/<blog_title>", methods=["GET"])
