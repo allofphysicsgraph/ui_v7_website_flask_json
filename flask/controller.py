@@ -63,7 +63,10 @@ from flask import (
 # https://nickjanetakis.com/blog/fix-missing-csrf-token-issues-with-flask
 from flask_wtf import FlaskForm, CSRFProtect, Form  # type: ignore
 
+# https://github.com/TypeError/secure
 import secure  # type: ignore
+
+# what feature gets added? See https://improveandrepeat.com/2020/10/python-friday-43-add-security-headers-to-your-flask-application/
 
 # https://flask-login.readthedocs.io/en/latest/_modules/flask_login/mixins.html
 # https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
