@@ -26,4 +26,6 @@ launch_webserver:
 launch_webserver_interactive:
 	docker compose up --build --force-recreate --remove-orphans
 
+down:
+	docker compose down
 # EOF
