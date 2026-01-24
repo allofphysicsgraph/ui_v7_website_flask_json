@@ -56,19 +56,25 @@ else
 	@echo 'FILE_NAME is undefined'
 endif
 
-docker:
+docker_build:
 	docker build -t ui_v7_flask:latest-$(this_arch) .
-	docker run -it --rm -v`pwd`/data.json:/home/appuser/app/data.json \
+
+docker: docker_build
+	docker run -it --rm 
+	   -v`pwd`/data.json:/home/appuser/app/data.json \
            -v`pwd`/logs/:/home/appuser/app/logs/ \
            -v`pwd`/users_sqlite.db:/home/appuser/app/users_sqlite.db \
-           --env-file .env --publish 5000:5000 ui_v7_flask:latest-$(this_arch)
+           --env-file .env \
+  	   --publish 5000:5000 ui_v7_flask:latest-$(this_arch)
 
-dockerlive: docker
-	docker run -it --rm -v`pwd`:/scratch \
+dockerlive: docker_build
+	docker run -it --rm \
+	   -v`pwd`:/scratch \
            -v`pwd`/data.json:/home/appuser/app/data.json \
            -v`pwd`/logs/:/home/appuser/app/logs/ \
            -v`pwd`/users_sqlite.db:/home/appuser/app/users_sqlite.db \
-           --env-file .env --entrypoint='' \
+           --env-file .env \
+ 	   --entrypoint='' \
            --publish 5000:5000 ui_v7_flask:latest-$(this_arch) /bin/bash
 
 
