@@ -98,6 +98,8 @@ COPY --chown=appuser:appuser \
      user.py \
      validate_dimensions_sympy.py \
      validate_steps_sympy.py \
+     cert.pem \
+     key.pem \
      /home/appuser/app/
 
 RUN echo "alias python=python3" > /home/appuser/.bashrc
