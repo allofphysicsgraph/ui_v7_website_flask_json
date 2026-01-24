@@ -1,8 +1,10 @@
+# Physics Derivation Graph
+# Ben Payne, 2026
+
 # Creative Commons Attribution 4.0 International License
 # https://creativecommons.org/licenses/by/4.0/
 
 # this Makefile contains targets for use inside the Docker container and on the baremetal host
-
 
 # Get the machine architecture.
 # On arm64 (Apple Silicon M1/M2/etc.), `uname -m` outputs "arm64".
