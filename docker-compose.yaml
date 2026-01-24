@@ -1,3 +1,7 @@
+# Physics Derivation Graph
+# https://allofphysics.com
+# Ben Payne
+
 # Creative Commons Attribution 4.0 International License
 # https://creativecommons.org/licenses/by/4.0/
 
@@ -32,9 +36,9 @@ services:
       --threads=4 
       --worker-class=gthread 
 #      --enable-stdio-inheritance
-# using "ports" makes flask/gunicorn accessible without going through nginx
     expose:
       - 5000
+# using "ports" makes flask/gunicorn accessible without going through nginx
 #    ports:
 #     - "5000:5000"
     volumes:
@@ -56,3 +60,5 @@ services:
     depends_on:
       - flask
 
+
+# EOF
