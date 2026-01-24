@@ -1,5 +1,5 @@
 
-This repo is the source code for the website <https://derivationmap.net/>, aka <https://allofphysics.com>.
+This repo is the source code for the website <https://allofphysics.com>, aka <https://derivationmap.net/>.
 
 
 
@@ -84,6 +84,44 @@ software in this repo has been tested with
 See <https://docs.docker.com/compose/compose-file/compose-versioning/> for compatibility of versions.
 
 
+which is gathered by running
+```bash
+$ docker compose version
+Docker Compose version v2.29.2
+```
+
+```bash
+$ docker version
+Client: Docker Engine - Community
+ Version:           27.2.0
+ API version:       1.47
+ Go version:        go1.21.13
+ Git commit:        3ab4256
+ Built:             Tue Aug 27 14:15:15 2024
+ OS/Arch:           linux/amd64
+ Context:           default
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          27.2.0
+  API version:      1.47 (minimum version 1.24)
+  Go version:       go1.21.13
+  Git commit:       3ab5c7d
+  Built:            Tue Aug 27 14:15:15 2024
+  OS/Arch:          linux/amd64
+  Experimental:     false
+ containerd:
+  Version:          1.7.21
+  GitCommit:        472731909fa34bd7bc9c087e4c27943f9835f111
+ runc:
+  Version:          1.1.13
+  GitCommit:        v1.1.13-0-g58aa920
+ docker-init:
+  Version:          0.19.0
+  GitCommit:        de40ad0
+```
+
+
 docker-compose instructions are from from
 <https://github.com/ChloeCodesThings/chloe_flask_docker_demo>
 and
@@ -97,8 +135,7 @@ nginx timeout
 
 # Licensing
 
-
-[Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/)
+Unless otherwise noted, all source code is covered by the [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/)
 
 
 # Software Requirements
