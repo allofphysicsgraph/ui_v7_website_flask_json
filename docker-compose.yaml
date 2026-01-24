@@ -1,6 +1,6 @@
 # Physics Derivation Graph
 # https://allofphysics.com
-# Ben Payne
+# Ben Payne, 2026
 
 # Creative Commons Attribution 4.0 International License
 # https://creativecommons.org/licenses/by/4.0/
@@ -41,12 +41,26 @@ services:
 # using "ports" makes flask/gunicorn accessible without going through nginx
 #    ports:
 #     - "5000:5000"
+    depends_on:
+      neo4j_docker:
+# https://docs.docker.com/compose/compose-file/05-services/#healthcheck
+        condition: service_healthy
+    networks:
+      neo4j-internal:
+        aliases:
+          - neo4j-network
     volumes:
      - ${PWD}/:/scratch
      - ${PWD}/flask/logs:/home/appuser/app/logs/
      - ${PWD}/flask/users_sqlite.db:/home/appuser/app/users_sqlite.db
      - ${PWD}/flask/data.json:/home/appuser/app/data.json
      - /var/log/auth.log:/home/appuser/app/logs/auth.log
+#    healthcheck:
+#      test: wget http://localhost:5000 || exit 1
+#      interval: 3s
+#      timeout: 10s
+#      retries: 20
+#      start_period: 3s
   nginx:
     build: ./services/nginx
     # https://docs.docker.com/reference/compose-file/services/#depends_on
