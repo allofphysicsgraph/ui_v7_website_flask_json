@@ -1,31 +1,31 @@
 # version numbers known to work are included here
 
-#Flask==3.1.2 as of 2026-01-24
+#Flask==3.1.2 as of 2026-01-24 for arm64 and amd64
 Flask
-#Flask-WTF==1.2.2 as of 2026-01-24
+#Flask-WTF==1.2.2 as of 2026-01-24 for arm64 and amd64
 Flask-WTF
-#Flask-Login==0.6.3 as of 2026-01-24
+#Flask-Login==0.6.3 as of 2026-01-24 for arm64 and amd64
 Flask-Login
-#Flask-Bootstrap==3.3.7.1 as of 2026-01-24
+#Flask-Bootstrap==3.3.7.1 as of 2026-01-24 for arm64 and amd64
 Flask-Bootstrap
 
-#scikit-build==0.18.1 as of 2026-01-24
+#scikit-build==0.18.1 as of 2026-01-24 for arm64 and amd64
 scikit-build
 # image size
-#opencv-python==4.13.0.90 as of 2026-01-24
+#opencv-python==4.13.0.90 as of 2026-01-24 for arm64 and amd64
 opencv-python
 
 # visualize graphs as static PNG or SVG
-#graphviz==0.21 as of 2026-01-24
+#graphviz==0.21 as of 2026-01-24 for arm64 and amd64
 graphviz
 
 wheel
-#gunicorn==24.1.1 as of 2026-01-24
+#gunicorn==24.1.1 as of 2026-01-24 for arm64 and amd64
 gunicorn
 
 # https://github.com/allofphysicsgraph/proofofconcept/issues/157
 secure==0.3.0 
-#as of 2026-01-24
+#as of 2026-01-24 for arm64 and amd64
 # TODO: un-pin this
 
 # convert internal data structure to dataframe;
@@ -53,13 +53,13 @@ pylint
 jsonschema
 
 # step validation
-#sympy==1.14.0 as of 2026-01-24
+#sympy==1.14.0 as of 2026-01-24 for arm64 and amd64
 sympy
 #antlr4-python3-runtime==4.13.2 as of 2026-01-24
 antlr4-python3-runtime
 
 # monitoring logs
-#matplotlib==3.10.8 as of 2026-01-24
+#matplotlib==3.10.8 as of 2026-01-24 for arm64 and amd64
 matplotlib
 #python-geoip-geolite2==2015.303
 #python-geoip-geolite2
@@ -68,18 +68,18 @@ matplotlib
 # TODO: re-enable
 
 # Sign in with Google
-#google-api-python-client==2.188.0 as of 2026-01-24
+#google-api-python-client==2.188.0 as of 2026-01-24 for arm64 and amd64
 google-api-python-client
 
 # https://google-auth.readthedocs.io/en/latest/reference/google.auth.transport.requests.html
-#google-auth-httplib2==0.3.0 as of 2026-01-24
+#google-auth-httplib2==0.3.0 as of 2026-01-24 for arm64 and amd64
 google-auth-httplib2
-#google-auth-oauthlib==1.2.4 as of 2026-01-24
+#google-auth-oauthlib==1.2.4 as of 2026-01-24 for arm64 and amd64
 google-auth-oauthlib
 
 # only necessary for localhost
 # from https://blog.miguelgrinberg.com/post/running-your-flask-application-over-https
-#pyOpenSSL==25.3.0 as of 2026-01-24
+#pyOpenSSL==25.3.0 as of 2026-01-24 for arm64 and amd64
 pyOpenSSL
 
 #EOF
