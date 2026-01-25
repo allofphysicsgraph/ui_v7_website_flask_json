@@ -18,9 +18,12 @@ logger = logging.getLogger(__name__)
 def get_db():
     logger.info("[trace]")
     if "db" not in g:
-        g.db = sqlite3.connect(
-            "users_sqlite.db", detect_types=sqlite3.PARSE_DECLTYPES
-        )
+        try:
+            g.db = sqlite3.connect(
+                "users_sqlite.db", detect_types=sqlite3.PARSE_DECLTYPES
+            )
+        except sqlite3.OperationalError as e:
+            print("database doesn't seem to exist")
         g.db.row_factory = sqlite3.Row
 
     return g.db
