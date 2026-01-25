@@ -1,4 +1,11 @@
 flask/logs
+
+# certificates
 flask/*.pem
 certs/*.pem
+
+# secrets for Google authentication sign-in
 .env
+
+# database of users who have signed in online
+flask/users_sqlite.db
