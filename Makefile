@@ -31,7 +31,7 @@ DOCKER_OR_PODMAN=docker
 launch_webserver:
 	$(DOCKER_OR_PODMAN) compose up --build --force-recreate --remove-orphans --detach
 
-launch_webserver_interactive:
+launch_webserver_monitor:
 	$(DOCKER_OR_PODMAN) compose up --build --force-recreate --remove-orphans
 
 down:
