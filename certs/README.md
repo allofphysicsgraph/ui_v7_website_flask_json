@@ -7,6 +7,9 @@ See <https://physicsderivationgraph.blogspot.com/2021/10/periodic-renewal-of-htt
 
 ```bash
 openssl req -x509 -newkey rsa:4096 -nodes -out fullchain.pem -keyout privkey.pem -days 365
+```
+and, separately,
+```bash
 openssl dhparam -out dhparam.pem 2048
 ```
 as per <https://stackoverflow.com/a/58221273/1164295>

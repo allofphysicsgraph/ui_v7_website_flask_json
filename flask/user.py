@@ -65,4 +65,6 @@ class User(UserMixin):
         )
         db.commit()
         return
+
+
 # EOF

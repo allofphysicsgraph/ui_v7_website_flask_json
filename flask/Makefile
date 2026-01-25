@@ -1,4 +1,5 @@
 # Physics Derivation Graph
+# https://allofphysics.com
 # Ben Payne, 2026
 
 # Creative Commons Attribution 4.0 International License

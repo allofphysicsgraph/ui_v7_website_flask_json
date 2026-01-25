@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 
-# Physics Derivation Graph
-# Ben Payne, 2021
-# https://creativecommons.org/licenses/by/4.0/
-# Attribution 4.0 International (CC BY 4.0)
-
 """
+Physics Derivation Graph
+Ben Payne, 2026
+http://creativecommons.org/licenses/by/4.0/
+Attribution 4.0 International (CC BY 4.0)
 separate the API routes and functions into this file and thus make controller.py smaller
 """
 # https://stackoverflow.com/a/16994175/1164295

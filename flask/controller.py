@@ -30,11 +30,16 @@
 """
 
 import os
+import sys
 import json
 import shutil
 import time
 import random
 import copy
+
+# https://docs.python.org/3/library/typing.html
+# inspired by https://news.ycombinator.com/item?id=33844117
+from typing import NewType, Dict, List
 
 # https://docs.python.org/3/library/sqlite3.html
 import sqlite3
@@ -121,6 +126,7 @@ import json_schema  # PDG
 import compute  # PDG
 import validate_steps_sympy as vir  # PDG
 import validate_dimensions_sympy as vdim  # PDG
+
 
 # global proc_timeout
 proc_timeout = 30
@@ -1543,6 +1549,7 @@ def comparison_of_design_options_database():
         "comparison_of_design_options_database.html", title="Comparison of Design Options Documentation"
     )
 
+
 @app.route("/design_principles_and_goals", methods=["GET", "POST"])
 def design_principles_and_goals():
     """
@@ -1552,7 +1559,6 @@ def design_principles_and_goals():
     return render_template(
         "design_principles_and_goals.html", title="Design Principles and Goals"
     )
-
 
 
 # @app.route("/example_T_f_d3js", methods=["GET", "POST"])
