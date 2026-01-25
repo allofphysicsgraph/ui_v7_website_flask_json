@@ -13,12 +13,13 @@ services:
       context: ./flask
       dockerfile: Dockerfile.gunicorn
     restart: unless-stopped
-    environment:
-     - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
-     - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
-     - SECRET_KEY=${SECRET_KEY}
-# https://docs.gunicorn.org/en/stable/settings.html
-# https://pythonspeed.com/articles/gunicorn-in-docker/
+    # https://stackoverflow.com/questions/29377853/how-can-i-use-environment-variables-in-docker-compose
+    # https://docs.docker.com/compose/how-tos/environment-variables/set-environment-variables/
+    env_file: ".env.google"
+
+    # gunicorn is a production-grade WSGI HTTP Server for Python
+    # https://docs.gunicorn.org/en/stable/settings.html
+    # https://pythonspeed.com/articles/gunicorn-in-docker/
     command: >
       gunicorn
       --reload
@@ -38,21 +39,22 @@ services:
 #      --enable-stdio-inheritance
     expose:
       - 5000
-# using "ports" makes flask/gunicorn accessible without going through nginx
-#    ports:
-#     - "5000:5000"
+    # using "ports" makes flask/gunicorn accessible without going through nginx
+    # ports:
+    #  - "5000:5000"
+
     volumes:
      - ${PWD}/:/scratch
      - ${PWD}/flask/logs:/home/appuser/app/logs/
      - ${PWD}/flask/users_sqlite.db:/home/appuser/app/users_sqlite.db
      - ${PWD}/flask/data.json:/home/appuser/app/data.json
      - /var/log/auth.log:/home/appuser/app/logs/auth.log
-#    healthcheck:
-#      test: wget http://localhost:5000 || exit 1
-#      interval: 3s
-#      timeout: 10s
-#      retries: 20
-#      start_period: 3s
+    # healthcheck:
+    #   test: wget http://localhost:5000 || exit 1
+    #   interval: 3s      # The health check will first run interval seconds after the container is started, and then again interval seconds after each previous check completes.
+    #   timeout: 5s      # If a single run of the check takes longer than timeout seconds then the check is considered to have failed.
+    #   retries: 20       # It takes retries consecutive failures of the health check for the container to be considered unhealthy.
+    #   start_period: 10s # provides initialization time for containers that need time to bootstrap. Probe failure during that period will not be counted towards the maximum number of retries. However, if a health check succeeds during the start period, the container is considered started and all consecutive failures will be counted towards the maximum number of retries.
   nginx:
     build: ./services/nginx
     # https://docs.docker.com/reference/compose-file/services/#depends_on
@@ -65,7 +67,6 @@ services:
     ports:
      - "80:80"
      - "443:443"
-#      - 1337:80
     volumes:
     - ${PWD}/flask/logs/:/logs/
     - ${PWD}/certs/:/certs/
