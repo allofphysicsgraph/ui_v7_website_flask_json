@@ -30,13 +30,13 @@ DOCKER_OR_PODMAN=docker
 
 
 
-# todo: docker kill $(docker ps -q); make up
+# todo: $(DOCKER_OR_PODMAN) kill $(docker ps -q); make up
 
 launch_webserver:
-	docker compose up --build --force-recreate --remove-orphans --detach
+	$(DOCKER_OR_PODMAN) compose up --build --force-recreate --remove-orphans --detach
 
 launch_webserver_interactive:
-	docker compose up --build --force-recreate --remove-orphans
+	$(DOCKER_OR_PODMAN) compose up --build --force-recreate --remove-orphans
 
 down:
 	# https://docs.docker.com/compose/reference/down/
