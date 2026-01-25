@@ -41,14 +41,6 @@ services:
 # using "ports" makes flask/gunicorn accessible without going through nginx
 #    ports:
 #     - "5000:5000"
-    depends_on:
-      neo4j_docker:
-# https://docs.docker.com/compose/compose-file/05-services/#healthcheck
-        condition: service_healthy
-    networks:
-      neo4j-internal:
-        aliases:
-          - neo4j-network
     volumes:
      - ${PWD}/:/scratch
      - ${PWD}/flask/logs:/home/appuser/app/logs/
