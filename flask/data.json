@@ -15251,7 +15251,7 @@
             "notes": ""
         },
         "4587046017": {
-            "AST": "Symbol('pdg4929'))",
+            "AST": "Symbol('pdg4929')",
             "author": "4a0987466473c589d2c328d12856760e",
             "creation date": "2020-08-11",
             "latex": "KE",
@@ -17747,7 +17747,7 @@
             "notes": ""
         },
         "7882872592": {
-            "AST": "Equality(Symbol('pdg9372'), Integral(Dot(Symbol('pdg6777'), Symbol('pdg2530')), Tuple(oo, Symbol('pdg2530'))))",
+            "AST": "Equality(Symbol('pdg9372'), Integral(Dot(Symbol('pdg6777'), Symbol('pdg2530')), Tuple(Symbol('pdg2530'), oo, Symbol('pdg2530'))))",
             "author": "4a0987466473c589d2c328d12856760e",
             "creation date": "2020-08-10",
             "latex": "W_{\\rm to\\ system} = \\int_{\\infty}^r \\vec{F}\\cdot d\\vec{r}",
