@@ -3514,7 +3514,7 @@ def generate_tex_for_derivation(deriv_id: str, user_email: str, path_to_db: str)
                         lat_file.write("\\end{equation}\n")
 
         lat_file.write("\\bibliographystyle{plain}\n")
-        lat_file.write("\\bibliography{pdg.bib}\n")
+        lat_file.write("\\bibliography{pdg_derivation_citations.bib}\n")
         lat_file.write("\\end{document}\n")
         lat_file.write("% EOF\n")
 
@@ -3558,10 +3558,10 @@ def generate_pdf_for_derivation(deriv_id: str, user_email: str, path_to_db: str)
     )
     shutil.move(tex_filename_without_extension + ".tex", tmp_latex_folder_full_path)
 
-    # copy the current pdg.bib from static to local for use with bibtex when compiling tex to PDF
+    # copy the current pdg_derivation_citations.bib from static to local for use with bibtex when compiling tex to PDF
     # https://docs.python.org/3/library/shutil.html
-    shutil.copy("/home/appuser/app/static/pdg.bib", tmp_latex_folder_full_path)
-    # shutil.copy("/home/appuser/app/static/pdg.bib", "/home/appuser/app/")
+    shutil.copy("/home/appuser/app/static/pdg_derivation_citations.bib", tmp_latex_folder_full_path)
+    # shutil.copy("/home/appuser/app/static/pdg_derivation_citations.bib", "/home/appuser/app/")
 
     # images need to be in the temporary folder to compile the .tex to PDF
     # https://docs.python.org/3/library/shutil.html#shutil.copytree
